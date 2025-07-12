@@ -46,6 +46,7 @@ function checkSession() {
   const cookieUser = getCookie('session_user');
 
   if (session && cookieUser && session.username === cookieUser) {
+    document.getElementById('welcome').innerText = `Halo, ${cookieUser}!`;
     window.location.href = 'admin.html';
   } else {
     alert('Session tidak ditemukan. Silakan login kembali.');
