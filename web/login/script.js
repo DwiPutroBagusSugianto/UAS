@@ -29,10 +29,6 @@ if (document.getElementById('loginForm')) {
     const pass = document.getElementById('password').value;
 
     if (users[uname] && users[uname] === pass) {
-      const sessionData = { username: uname, loginTime: Date.now() };
-      sessionStorage.setItem('session', JSON.stringify(sessionData));
-      setCookie('session_user', uname, 1); // expire in 1 day
-
       window.location.href = 'admin.html';
     } else {
       alert('Username atau password salah!');
