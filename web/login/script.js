@@ -29,6 +29,10 @@ if (document.getElementById('loginForm')) {
     const pass = document.getElementById('password').value;
 
     if (users[uname] && users[uname] === pass) {
+      const sessionData = { username: uname, loginTime: Date.now() };
+      sessionStorage.setItem('session', JSON.stringify(sessionData));
+      setCookie('session_user', uname, 1); // expire in 1 day
+
       window.location.href = 'admin.html';
     } else {
       alert('Username atau password salah!');
@@ -43,7 +47,6 @@ function checkSession() {
 
   if (session && cookieUser && session.username === cookieUser) {
     document.getElementById('welcome').innerText = `Halo, ${cookieUser}!`;
-    window.location.href = 'admin.html';
   } else {
     alert('Session tidak ditemukan. Silakan login kembali.');
     window.location.href = 'login.html';
